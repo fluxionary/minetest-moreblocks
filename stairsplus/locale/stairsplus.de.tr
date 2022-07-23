@@ -7,44 +7,44 @@ Empty=leer
 Input=Eingang
 Max=Anzahl
 Microblocks=mikroblock
-Nodes=
+Nodes=Blöcke
 (owned by @1)=gehört @1
 Set=Ok
 Working on @1=arbeitet mit @1
 
 #: shapes/micros.lua
-@1 1/16 Microblock=@1mikroblock
-@1 1/8 Microblock=@1mikroblock
-@1 1/4 Microblock=@1mikroblock
+@1 1/16 Microblock=@1mikroblock (1/16)
+@1 1/8 Microblock=@1mikroblock (1/8)
+@1 1/4 Microblock=@1mikroblock (1/4)
 @1 Microblock=@1mikroblock
-@1 3/4 Microblock=@1mikroblock
-@1 7/8 Microblock=@1mikroblock
-@1 15/16 Microblock=@1mikroblock
+@1 3/4 Microblock=@1mikroblock (3/4)
+@1 7/8 Microblock=@1mikroblock (7/8)
+@1 15/16 Microblock=@1mikroblock (15/16)
 
 #: shapes/panels.lua
-@1 1/16 Panel=@1paneel
-@1 1/8 Panel=@1paneel
-@1 1/4 Panel=@1paneel
-@1 1/2 Panel=@1paneel
-@1 3/4 Panel=@1paneel
-@1 7/8 Panel=@1paneel
-@1 15/16 Panel=@1paneel
+@1 1/16 Panel=@1paneel (1/16)
+@1 1/8 Panel=@1paneel (1/8)
+@1 1/4 Panel=@1paneel (1/4)
+@1 1/2 Panel=@1paneel (1/2)
+@1 3/4 Panel=@1paneel (3/4)
+@1 7/8 Panel=@1paneel (7/8)
+@1 15/16 Panel=@1paneel (15/16)
 
 #: shapes/slabs.lua
-@1 1/16 Slab=@1platte
-@1 1/8 Slab=@1platte
-@1 1/4 Slab=@1platte
-@1 1/2 Slab=@1platte
-@1 3/4 Slab=@1platte
-@1 7/8 Slab=@1platte
-@1 15/16 Slab=@1platte
-@1 1/16 Slab Three Sides=@1platte
-@1 1/16 Slab Three Sides U=@1platte
-@1 1/16 Slab Two Sides=@1platte
+@1 1/16 Slab=@1platte (1/16)
+@1 1/8 Slab=@1platte (1/8)
+@1 1/4 Slab=@1platte (1/4)
+@1 1/2 Slab=@1platte (1/2)
+@1 3/4 Slab=@1platte (3/4)
+@1 7/8 Slab=@1platte (7/8)
+@1 15/16 Slab=@1platte (15/16)
+@1 1/16 Slab Three Sides=@1platte (1/16)
+@1 1/16 Slab Three Sides U=@1platte (1/16)
+@1 1/16 Slab Two Sides=@1platte (1/16)
 
 #: shapes/slopes.lua
-@1 1/2 Slope=@1neigung
-@1 1/2 Slope Raised=@1neigung
+@1 1/2 Slope=@1neigung (1/2)
+@1 1/2 Slope Raised=@1neigung (1/2)
 @1 Slope=@1neigung
 @1 Slope Cut=@1neigung
 @1 Slope Inner=@1neigung
@@ -62,10 +62,10 @@ Working on @1=arbeitet mit @1
 
 #: shapes/stairs.lua
 @1 Stair=@1treppe
-@1 1/16 Alt Stair=@1treppe
-@1 1/8 Alt Stair=@1treppe
-@1 1/4 Alt Stair=@1treppe
-@1 1/2 Alt Stair=@1treppe
+@1 1/16 Alt Stair=@1treppe (1/16)
+@1 1/8 Alt Stair=@1treppe (1/8)
+@1 1/4 Alt Stair=@1treppe (1/4)
+@1 1/2 Alt Stair=@1treppe (1/2)
 @1 Inner Stair=@1treppe
 @1 Outer Stair=@1treppe
 @1 Half Stair=@1treppe
