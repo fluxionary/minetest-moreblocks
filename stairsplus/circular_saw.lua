@@ -7,12 +7,39 @@ local get_location_string = stairsplus.util.get_location_string
 
 local S = stairsplus.S
 local F = minetest.formspec_escape
+local FS = function(...) return F(S(...))  end
 
 local formspec_style = stairsplus.resources.formspec_style
 
 
 function circular_saw.build_formspec(meta, inv)
 	local inv_location = get_location_string(inv)
+	local owner = meta:get("owner")
+	local protection = meta:get("protection")
+	local protection_description
+
+	if protection == "public" then
+		protection_description = ([[
+			button[0.5,5.2;1.5,0.5;public;%s]
+			label[0.5,5.8;%s]
+		]]):format(FS("Public?"), FS("(Public)"))
+
+	elseif protection == "protected" then
+		protection_description = ([[
+			button[0.5,5.2;1.5,0.5;public;%s]
+			label[0.5,5.8;%s]
+		]]):format(FS("Public?"), FS("(Protected)"))
+
+	elseif owner then
+		protection_description = ([[
+			button[0.5,5.2;1.5,0.5;public;%s]
+			label[0.5,5.8;%s]
+		]]):format(FS("Public?"), FS("Owner: @1", owner))
+
+	else
+		protection_description = ""
+	end
+
 	return ([[
 		size[10,11]
 		%s
@@ -25,6 +52,8 @@ function circular_saw.build_formspec(meta, inv)
 		list[%s;stairsplus:recycle;1.7,2;1,1;]
 		field[0.3,3.5;1,1;max_offered;%s:;%i]
 		button[1,3.2;1.7,1;Set;%s]
+
+		%s
 
 		list[%s;stairsplus:output;2.8,0;7,7;]
 		list[current_player;main;1.5,7.25;8,4;]
@@ -40,15 +69,16 @@ function circular_saw.build_formspec(meta, inv)
 		listring[current_player;main]
 	]]):format(
 		formspec_style,
-		F(S("Nodes")),
+		FS("Nodes"),
 		inv_location,
-		F(S("Microblocks")),
+		FS("Microblocks"),
 		inv_location,
-		F(S("Input")),
+		FS("Input"),
 		inv_location,
-		F(S("Max")),
+		FS("Max"),
 		meta:get_int("stairsplus:max_offered"),
-		F(S("Set")),
+		FS("Set"),
+		protection_description,
 		inv_location,
 		inv_location,
 		inv_location,

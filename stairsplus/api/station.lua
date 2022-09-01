@@ -58,6 +58,19 @@ function station.on_receive_fields(meta, inv, formname, fields, sender, build_fo
 		end
 	end
 
+	if fields.public and meta:get("owner") then
+		local current_protection = meta:get("protection")
+		if not current_protection then
+			meta:set_string("protection", "protected")
+
+		elseif current_protection == "protected" then
+			meta:set_string("protection", "public")
+
+		else
+			meta:set_string("protection", "")
+		end
+	end
+
 	return not not fields.max_offered
 end
 
@@ -226,7 +239,11 @@ function station.on_inventory_take(meta, inv, listname, index, stack, player, up
 	end
 end
 
-function station.initialize_metadata(meta, inv, shape_groups, build_formspec, update_metadata)
+function station.initialize_metadata(placer, meta, inv, shape_groups, build_formspec, update_metadata)
+	if minetest.is_player(placer) then
+		meta:set_string("owner", placer:get_player_name())
+	end
+
 	meta:set_string("stairsplus:shape_groups", minetest.write_json(shape_groups))
 
 	if meta:get_int("max_offered") ~= 0 then
@@ -265,39 +282,37 @@ function station.initialize_inventory(inv, shape_groups)
 	end
 end
 
-function station.on_construct(pos, shape_groups, build_formspec, update_metadata)
+function station.on_construct(pos, shape_groups)
 	local meta = minetest.get_meta(pos)
 	local inv = meta:get_inventory()
 
 	station.initialize_inventory(inv, shape_groups)
-	station.initialize_metadata(meta, inv, shape_groups, build_formspec, update_metadata)
 	station.update_inventory(meta, inv)
-end
-
-function station.after_place_node(pos, placer)
-	local meta = minetest.get_meta(pos)
-	if minetest.is_player(placer) then
-		meta:set_string("owner", placer:get_player_name())
-	end
 end
 
 function api.register_station(name, def)
 	local shape_groups = def.shape_groups
-	local build_formspec = def.build_formspec
-	local update_metadata = def.update_metadata
+	def.shape_groups = nil
 
 	if not shape_groups then
 		error("station requires shape_groups defined")
 	end
 
-	def.shape_groups = nil
+	local build_formspec = def.build_formspec
 	def.build_formspec = nil
+	local update_metadata = def.update_metadata
 	def.update_metadata = nil
 
-	def.after_place_node = def.after_place_node or station.after_place_node
+	def.after_place_node = function(pos, placer)
+		local meta = minetest.get_meta(pos)
+		local inv = meta:get_inventory()
+
+		station.initialize_metadata(placer, meta, inv, shape_groups, build_formspec, update_metadata)
+	end
+
 	def.on_construct = def.on_construct or
 		function(pos)
-			return station.on_construct(pos, shape_groups, build_formspec, update_metadata)
+			return station.on_construct(pos, shape_groups)
 		end
 
 	def.can_dig = def.can_dig or
