@@ -17,7 +17,6 @@ stairsplus_legacy = {
 		farming = minetest.get_modpath("farming"),
 		gloopblocks = minetest.get_modpath("gloopblocks"),
 		prefab = minetest.get_modpath("prefab"),
-		stairs = minetest.get_modpath("stairs"),
 		technic = minetest.get_modpath("technic"),
 		wool = minetest.get_modpath("wool"),
 	},

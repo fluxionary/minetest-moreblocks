@@ -285,13 +285,6 @@ For the creation of crafting stations which can be used to transform nodes into 
     * `update_metadata = function(meta, inv)`
       A function which updates the node's metadata (optional)
 
-## Compat API
-
-For compatability w/ other mods
-
-* `function stairsplus.compat.override_stairs(name, node, overrides, meta)`
-  Override stairs registered w/ the `stairs` mod, and replace them w/ stairsplus-compatible nodes.
-
 # Legacy API
 
 Methods from the previous "moreblocks" version of stairsplus which are still provided so as not to break

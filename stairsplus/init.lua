@@ -14,7 +14,6 @@ stairsplus = {
 	has = {
 		default = minetest.get_modpath("default"),
 		i3 = minetest.get_modpath("i3"),
-		stairs = minetest.get_modpath("stairs"),
 		unified_inventory = minetest.get_modpath("unified_inventory"),
 	},
 
