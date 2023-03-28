@@ -29,3 +29,7 @@ stairsplus.legacy_place_mechanic (use legacy place mecahnic) bool true
 
 # allows crafting shaped nodes in addition to cutting them
 stairsplus.crafting_schemata_enabled (enable crafting schemata) bool true
+
+# how much to dim microblocks. an integer value will dim them by that integer, or set to the string scaled
+# in order to enable scaled dimming.
+stairsplus.light_dimming (light dimming) string 1

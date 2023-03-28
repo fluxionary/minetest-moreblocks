@@ -1,9 +1,8 @@
 local api = stairsplus.api
 
-local legacy_mode = stairsplus.settings.legacy_mode
-local legacy_place_mechanic = stairsplus.settings.legacy_place_mechanic
+local s = stairsplus.settings
 
-if legacy_place_mechanic then
+if s.legacy_place_mechanic then
 	local wall_right_dirmap = { 9, 18, 7, 12 }
 	local wall_left_dirmap = { 11, 16, 5, 14 }
 	local ceil_dirmap = { 20, 23, 22, 21 }
@@ -99,9 +98,13 @@ end
 function api.scale_light(light_source, shape_def)
 	if not light_source or light_source == 0 then
 		return 0
-	elseif legacy_mode then
-		return light_source - 1
 	end
 
-	return math.max(1, math.min(math.round(light_source * shape_def.eighths / 4), light_source))
+	if s.light_dimming == "scaled" then
+		local scale = s.light_scaling * shape_def.eighths
+		return math.max(1, math.min(math.round(light_source * scale), light_source))
+	end
+
+	local light_dimming = tonumber(s.light_dimming) or 1
+	return math.max(1, light_source - light_dimming)
 end
