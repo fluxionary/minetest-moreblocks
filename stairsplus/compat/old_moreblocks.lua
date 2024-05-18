@@ -9,7 +9,7 @@ local is_legacy_paramtype2 = stairsplus.compat.is_legacy_paramtype2
 local legacy_mode = stairsplus.settings.legacy_mode
 
 local function clean_legacy_fields(fields)
-	fields = fields or {}
+	fields = table.copy(fields) or {}
 
 	fields.drawtype = nil
 	fields.light_source = nil
