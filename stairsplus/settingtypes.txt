@@ -32,3 +32,9 @@ stairsplus.crafting_schemata_enabled (enable crafting schemata) bool true
 
 # when set to true, will only register nodes specified in $WORLD_PATH/stairsplus.whitelist
 stairsplus.whitelist_mode (whitelist mode) bool false
+
+# this fork changes how groups for stairsplus derivative nodes are computed. normally this is logged, because i don't
+# have a better way to communicate this. however, these changes don't cause any actual incompatibility that i'm aware
+# of. if you don't want to fix the mods that use moreblocks to be aware of this fork, you can enable this setting
+# to remove those log messages.
+stairsplus.silence_group_overrides (silence group override log messages) bool false
